@@ -1,0 +1,167 @@
+generated: '2026-09-12'
+method: probed
+source: direct HTTP probes of every host this record knows (2026-09-12)
+note: >-
+  No document was found, and NO WellKnown or SecurityTxt pointer is emitted from this file. Two
+  distinct results are recorded below and they are not equivalent. Paths ending in `.txt` are
+  answered honestly by the origin — /robots.txt returns a real 200 robots file and /sitemap.xml a
+  real 225-URL sitemap, while /.well-known/security.txt and /llms.txt return a real 404 with the
+  CMS body "Sorry, the request URL was not found" — so security.txt and llms.txt are genuinely
+  absent. Every path WITHOUT a .html/.txt extension is answered 403 by the site's edge WAF
+  (`status: CE-WAF-WLF`, title 异常访问, from the 中企动力/300.cn hosting platform) regardless of
+  whether the resource exists: a control probe of /zzz-not-a-real-path-9f3 and /zzz.json returned
+  the identical 403 body, so those statuses record an edge policy applied to our crawler and are
+  not evidence about the origin either way. Aerotech (中科艾尔) is a semiconductor ultra-high-purity
+  valve and tubing MANUFACTURER on a 300.cn brochure CMS; it has no developer program, no api/dev/
+  docs subdomain (all NXDOMAIN) and no GitHub organisation, so no /.well-known API surface is
+  expected here.
+hosts:
+- host: www.aero-tech.com.cn
+  note: >-
+    The company's only live web host (CDN: 1810300274.cdn.site.cdn300.cn). Edge WAF answers 403 on
+    every extension-less path; .txt paths are answered honestly.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+    note: Real CMS 404 body — genuinely absent.
+  - path: /.well-known/openid-configuration
+    status: 403
+    file: null
+    note: Blanket edge WAF 403, same body as a control probe of a nonsense path.
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    file: null
+    note: Blanket edge WAF 403, same body as a control probe of a nonsense path.
+  - path: /.well-known/api-catalog
+    status: 403
+    file: null
+    note: Blanket edge WAF 403, same body as a control probe of a nonsense path.
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    file: null
+    note: Blanket edge WAF 403, same body as a control probe of a nonsense path.
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+    note: Blanket edge WAF 403; no AgentCard body was returned, so no a2a/ artifact is written.
+  - path: /.well-known/agent.json
+    status: 403
+    file: null
+    note: Blanket edge WAF 403; legacy pre-0.3 agent card path, also no body.
+- host: aero-tech.com.cn
+  note: >-
+    Apex domain carries NS and a TXT SPF record but NO A/AAAA record — it does not resolve, so no
+    HTTP probe is possible. status 0 records DNS resolution failure, not an HTTP response.
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 0
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 0
+    file: null
+  - path: /.well-known/api-catalog
+    status: 0
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 0
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 0
+    file: null
+  - path: /.well-known/agent.json
+    status: 0
+    file: null
+contract_discovery:
+  note: >-
+    STEP 0b run in full on 2026-09-12. The record carries no apis[] entries, so there is no baseURL
+    host and no OpenAPI servers[] host; the company's single web host is also its docs host. DNS
+    was checked for api/dev/developer/docs/portal/en/shop/mall/erp/oa/crm subdomains — every one is
+    NXDOMAIN; only www and mail (Aliyun 企业邮箱) exist.
+  probes:
+  - path: /openapi.json
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page, not a spec
+  - path: /openapi.yaml
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page, not a spec
+  - path: /swagger.json
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page, not a spec
+  - path: /v1/openapi.json
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page, not a spec
+  - path: /api-docs
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page
+  - path: /api
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page
+  - path: /docs
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page
+  - path: /redoc
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page
+  - path: /graphql
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page; no GraphQL surface is named anywhere in the company's material
+  - path: /asyncapi.yaml
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page
+  - path: /apis.json
+    hosts: [www.aero-tech.com.cn]
+    status: 403
+    result: edge WAF block page
+  - path: /llms.txt
+    hosts: [www.aero-tech.com.cn]
+    status: 404
+    result: real CMS 404 — genuinely absent
+  - path: /robots.txt
+    hosts: [www.aero-tech.com.cn]
+    status: 200
+    result: >-
+      real robots.txt; names only CMS admin paths and a sitemap. No developer, api or docs path
+      appears in it.
+  - path: /sitemap.xml
+    hosts: [www.aero-tech.com.cn]
+    status: 200
+    result: >-
+      real sitemap with 225 URLs — 140 /product/, 29 /Products_list/, 15 /news/, plus About,
+      Contact, Case, Honor, download, jobs, service. ZERO developer, api, docs or spec URLs. This
+      is the strongest single piece of evidence that no API surface exists: the site's own complete
+      URL inventory contains none.
+  graphql: >-
+    not probed beyond /graphql — no GraphQL endpoint is named in any of the company's public
+    material
+  mcp: not probed — no MCP endpoint is named anywhere in the company's public material
+  ogc: >-
+    not probed — no evidence points at an OGC surface; no WMS/WFS/WCS/WMTS/CSW or "OGC API"
+    language appears in any material about this company, and blind path patterns are out of bounds
+  wsdl: >-
+    not probed for ?wsdl — there is no baseURL or service host to probe against, and no SOAP or
+    enterprise integration language appears anywhere on the site
+  registries:
+  - registry: github
+    query: aerotech / aero-tech / 中科艾尔 organisation
+    results: no organisation found for the company
+  - registry: npm
+    query: aerotech / aero-tech
+    results: no first-party package; npm hits belong to unrelated projects
+  documentation_surface: >-
+    The only "documentation" the company publishes is /download.html — twelve PDF product catalogues
+    (product 样册) for regulators, diaphragm valves, bellows/angle valves, fittings, tubing and
+    integrated gas panels, most dated 2025-09-16. These are hardware datasheets, not API references.

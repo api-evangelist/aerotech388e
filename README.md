@@ -1,4 +1,4 @@
-# Aerotech388e
+# Aerotech (Beijing)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,5 +64,12 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aerotech388e is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://equityzen.com/company/aerotech388e
+Aerotech — 中科艾尔（北京）科技有限公司, Zhongke Aier (Beijing) Technology Co., Ltd., founded March 2008 as
+泰科爱尔（北京）科技有限公司 — is a Beijing manufacturer of ultra-high-purity semiconductor gas line hardware:
+EP-electropolished stainless tubing and fittings, UHP pressure regulators, diaphragm, bellows and vacuum
+angle valves, integrated gas distribution panels and precursor source bottles. It became a qualified SMIC
+(中芯国际) supplier in March 2021. It publishes no API, SDK, developer program or machine-readable contract;
+see the `x-coverage` block in `apis.yml` for the probe evidence behind that finding.
+
+- Company website: https://www.aero-tech.com.cn/
+- Surfaced via the API Evangelist harvest backlog (source: secondary-market): https://equityzen.com/company/aerotech388e
